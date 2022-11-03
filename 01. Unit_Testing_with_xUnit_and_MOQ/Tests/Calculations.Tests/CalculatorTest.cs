@@ -21,12 +21,15 @@ public class CalculatorTest : IClassFixture<CalculatorFixture>
     {
         _testOutputHelper = testOutputHelper;
         _calculatorFixture = calculatorFixture;
+        _testOutputHelper.WriteLine($"Constructor - {DateTime.Now}");
     }
 
     [Fact]
     [Trait("Mathematics", "Sum")]
     public void Add_GivenTwoIntValues_ReturnsSumOfTwoValues()
     {
+        _testOutputHelper.WriteLine($"Add_GivenTwoIntValues_ReturnsSumOfTwoValues - {DateTime.Now}");
+
         //Arrange
         var calc = _calculatorFixture.Calc;
         //var calc = new Calculator();
@@ -45,6 +48,8 @@ public class CalculatorTest : IClassFixture<CalculatorFixture>
     [Trait("Mathematics", "Sum")]
     public void Add_GivenTwoDowbleValues_ReturnsSumOfTwoValues()
     {
+        _testOutputHelper.WriteLine($"Add_GivenTwoDowbleValues_ReturnsSumOfTwoValues - {DateTime.Now}");
+
         //Arrange
         var calc = _calculatorFixture.Calc;
         //var calc = new Calculator();
@@ -68,20 +73,28 @@ public class CalculatorTest : IClassFixture<CalculatorFixture>
     [Trait("Mathematics", "Fibo")]
     public void FiboDoesNotZeroValue01()
     {
+        _testOutputHelper.WriteLine($"FiboDoesNotZeroValue01 - {DateTime.Now}");
+
         var calc = _calculatorFixture.Calc;
         //var calc = new Calculator();
 
         Assert.All(calc.FiboNumbers, n=> Assert.NotEqual(0, n));
-    }
     
+        _testOutputHelper.WriteLine("By : YFereidouni");
+    }
+
     [Fact]
     [Trait("Mathematics", "Fibo")]
     public void FiboDoesNotZeroValue02()
     {
+        _testOutputHelper.WriteLine($"FiboDoesNotZeroValue02 - {DateTime.Now}");
+
         var calc = _calculatorFixture.Calc;
         //var calc = new Calculator();
 
         Assert.DoesNotContain(0, calc.FiboNumbers);
+    
+        _testOutputHelper.WriteLine("By : YFereidouni");
     }
 
 
@@ -89,10 +102,14 @@ public class CalculatorTest : IClassFixture<CalculatorFixture>
     [Trait("Mathematics", "Fibo")]
     public void FiboIncludes13()
     {
+        _testOutputHelper.WriteLine($"FiboIncludes13 - {DateTime.Now}");
+
         var calc = _calculatorFixture.Calc;
         //var calc = new Calculator();
 
         Assert.Contains(13, calc.FiboNumbers);
+    
+        _testOutputHelper.WriteLine("By : YFereidouni");
     }
 
 
@@ -100,6 +117,8 @@ public class CalculatorTest : IClassFixture<CalculatorFixture>
     [Trait("Mathematics", "Fibo")]
     public void FiboDoesNotIncludes4()
     {
+        _testOutputHelper.WriteLine($"FiboDoesNotIncludes4 - {DateTime.Now}");
+
         var calc = _calculatorFixture.Calc;
         //var calc = new Calculator();
 
@@ -112,6 +131,8 @@ public class CalculatorTest : IClassFixture<CalculatorFixture>
     [Trait("Mathematics", "Fibo")]
     public void CheckCollection()
     {
+        _testOutputHelper.WriteLine($"CheckCollection - {DateTime.Now}");
+
         var expectedCollection = new List<int> { 1, 1, 2, 3, 5, 8, 13 };
         
         var calc = _calculatorFixture.Calc;
