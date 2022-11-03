@@ -1,13 +1,27 @@
 namespace Calculations.Tests;
 
-public class CalculatorTest
+public class CalculatorFixture
 {
+    public Calculator Calc => new Calculator();
+}
+
+public class CalculatorTest : IClassFixture<CalculatorFixture>
+{
+    private readonly CalculatorFixture _calculatorFixture;
+
+    public CalculatorTest(CalculatorFixture calculatorFixture)
+    {
+        _calculatorFixture = calculatorFixture;
+    }
+
     [Fact]
     [Trait("Mathematics", "Sum")]
     public void Add_GivenTwoIntValues_ReturnsSumOfTwoValues()
     {
         //Arrange
-        var calc = new Calculator();
+        var calc = _calculatorFixture.Calc;
+        //var calc = new Calculator();
+        
         int a = 1;
         int b = 2;
         //Act
@@ -22,7 +36,8 @@ public class CalculatorTest
     public void Add_GivenTwoDowbleValues_ReturnsSumOfTwoValues()
     {
         //Arrange
-        var calc = new Calculator();
+        var calc = _calculatorFixture.Calc;
+        //var calc = new Calculator();
         double a = 1.23;
         double b = 3.55;
         //Act
@@ -42,7 +57,9 @@ public class CalculatorTest
     [Trait("Mathematics", "Fibo")]
     public void FiboDoesNotZeroValue01()
     {
-        var calc = new Calculator();
+        var calc = _calculatorFixture.Calc;
+        //var calc = new Calculator();
+
         Assert.All(calc.FiboNumbers, n=> Assert.NotEqual(0, n));
     }
     
@@ -50,7 +67,9 @@ public class CalculatorTest
     [Trait("Mathematics", "Fibo")]
     public void FiboDoesNotZeroValue02()
     {
-        var calc = new Calculator();
+        var calc = _calculatorFixture.Calc;
+        //var calc = new Calculator();
+
         Assert.DoesNotContain(0, calc.FiboNumbers);
     }
 
@@ -59,7 +78,9 @@ public class CalculatorTest
     [Trait("Mathematics", "Fibo")]
     public void FiboIncludes13()
     {
-        var calc = new Calculator();
+        var calc = _calculatorFixture.Calc;
+        //var calc = new Calculator();
+
         Assert.Contains(13, calc.FiboNumbers);
     }
 
@@ -68,7 +89,9 @@ public class CalculatorTest
     [Trait("Mathematics", "Fibo")]
     public void FiboDoesNotIncludes4()
     {
-        var calc = new Calculator();
+        var calc = _calculatorFixture.Calc;
+        //var calc = new Calculator();
+
         Assert.DoesNotContain(4, calc.FiboNumbers);
     }
 
@@ -79,7 +102,8 @@ public class CalculatorTest
     {
         var expectedCollection = new List<int> { 1, 1, 2, 3, 5, 8, 13 };
         
-        var calc = new Calculator();
+        var calc = _calculatorFixture.Calc;
+        //var calc = new Calculator();
         
         Assert.Equal(expectedCollection, calc.FiboNumbers);
     }
