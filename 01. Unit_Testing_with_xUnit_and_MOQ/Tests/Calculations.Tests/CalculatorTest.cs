@@ -12,16 +12,20 @@ public class CalculatorFixture : IDisposable
     }
 }
 
-public class CalculatorTest : IClassFixture<CalculatorFixture>
+public class CalculatorTest : IClassFixture<CalculatorFixture>, IDisposable
 {
     private readonly ITestOutputHelper _testOutputHelper;
     private readonly CalculatorFixture _calculatorFixture;
+
+    private readonly MemoryStream _memoryStream;
 
     public CalculatorTest(ITestOutputHelper testOutputHelper, CalculatorFixture calculatorFixture)
     {
         _testOutputHelper = testOutputHelper;
         _calculatorFixture = calculatorFixture;
         _testOutputHelper.WriteLine($"Constructor - {DateTime.Now}");
+
+        _memoryStream = new MemoryStream(); // with IDisposable you can dispose resources in Dispose method
     }
 
     [Fact]
@@ -140,5 +144,10 @@ public class CalculatorTest : IClassFixture<CalculatorFixture>
         
         Assert.Equal(expectedCollection, calc.FiboNumbers);
         _testOutputHelper.WriteLine("By : YFereidouni");
+    }
+
+    public void Dispose()
+    {
+        _memoryStream.Dispose();
     }
 }
