@@ -1,3 +1,5 @@
+using Xunit.Abstractions;
+
 namespace Calculations.Tests;
 
 public class CalculatorFixture
@@ -7,10 +9,12 @@ public class CalculatorFixture
 
 public class CalculatorTest : IClassFixture<CalculatorFixture>
 {
+    private readonly ITestOutputHelper _testOutputHelper;
     private readonly CalculatorFixture _calculatorFixture;
 
-    public CalculatorTest(CalculatorFixture calculatorFixture)
+    public CalculatorTest(ITestOutputHelper testOutputHelper, CalculatorFixture calculatorFixture)
     {
+        _testOutputHelper = testOutputHelper;
         _calculatorFixture = calculatorFixture;
     }
 
@@ -29,6 +33,7 @@ public class CalculatorTest : IClassFixture<CalculatorFixture>
 
         //Asset
         Assert.Equal(3, result);
+        _testOutputHelper.WriteLine("By : YFereidouni");
     }
 
     [Fact]
@@ -51,6 +56,7 @@ public class CalculatorTest : IClassFixture<CalculatorFixture>
 
         ///3rd parameter state that round up not applied.
         Assert.Equal(4.7, result, 0); //Passed
+        _testOutputHelper.WriteLine("By : YFereidouni");
     }
 
     [Fact]
@@ -93,6 +99,7 @@ public class CalculatorTest : IClassFixture<CalculatorFixture>
         //var calc = new Calculator();
 
         Assert.DoesNotContain(4, calc.FiboNumbers);
+        _testOutputHelper.WriteLine("By : YFereidouni");
     }
 
 
@@ -106,5 +113,6 @@ public class CalculatorTest : IClassFixture<CalculatorFixture>
         //var calc = new Calculator();
         
         Assert.Equal(expectedCollection, calc.FiboNumbers);
+        _testOutputHelper.WriteLine("By : YFereidouni");
     }
 }
