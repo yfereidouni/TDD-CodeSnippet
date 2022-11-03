@@ -27,4 +27,14 @@ public class NamesTest
 
         Assert.Matches("([A-Z]{1}[a-z]+|[a-z]+) ([A-Z]{1}[a-z]+|[a-z]+)", result);
     }
+
+    [Fact]
+    public void NickName_ShouldNotBeNull()
+    {
+        var names = new Names();
+        names.NickName = "Green Beret";
+
+        Assert.NotNull(names.NickName);
+        Assert.False(string.IsNullOrEmpty(names.NickName));
+    }
 }
