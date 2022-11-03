@@ -37,4 +37,13 @@ public class NamesTest
         Assert.NotNull(names.NickName);
         Assert.False(string.IsNullOrEmpty(names.NickName));
     }
+
+    [Fact]
+    public void MakeFullName_AlwaysReturnsValue()
+    {
+        var names = new Names();
+        var result = names.MakeFullName("Yasser", "Fereidouni");
+
+        Assert.NotNull(result);
+    }
 }
