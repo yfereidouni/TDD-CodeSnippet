@@ -45,5 +45,6 @@ public class NamesTest
         var result = names.MakeFullName("Yasser", "Fereidouni");
 
         Assert.NotNull(result);
+        Assert.False(string.IsNullOrEmpty(result));
     }
 }
