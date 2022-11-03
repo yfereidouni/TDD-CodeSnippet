@@ -30,8 +30,8 @@ public class CustomerTest
     {
         var customer = new Customer();
 
-        var result = Assert.Throws<ArgumentException>(() => customer.GetOrderByName(null));
+        var exceptionDetails = Assert.Throws<ArgumentException>(() => customer.GetOrderByName(null));
 
-        Assert.Equal("Error Happend!", result.Message);
+        Assert.Equal("Error Happend!", exceptionDetails.Message);
     }
 }
