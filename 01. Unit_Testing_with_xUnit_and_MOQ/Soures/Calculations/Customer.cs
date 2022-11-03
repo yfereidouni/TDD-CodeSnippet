@@ -11,7 +11,7 @@ public class Customer
     public string Name => "Yasser";
     public int Age => 37;
 
-    public virtual int GetOrderByName(string name)
+    public virtual int GetOrderByName(string? name)
     {
         if (string.IsNullOrEmpty(name))
         {
@@ -30,7 +30,7 @@ public class LoyalCustomer : Customer
         this.Discount = 10;
     }
 
-    public override int GetOrderByName(string name)
+    public override int GetOrderByName(string? name)
     {
         return 101;
     }
