@@ -35,4 +35,45 @@ public class CalculatorTest
         ///3rd parameter state that round up not applied.
         Assert.Equal(4.7, result, 0); //Passed
     }
+
+    [Fact]
+    public void FiboDoesNotZeroValue01()
+    {
+        var calc = new Calculator();
+        Assert.All(calc.FiboNumbers, n=> Assert.NotEqual(0, n));
+    }
+    
+    [Fact]
+    public void FiboDoesNotZeroValue02()
+    {
+        var calc = new Calculator();
+        Assert.DoesNotContain(0, calc.FiboNumbers);
+    }
+
+
+    [Fact]
+    public void FiboIncludes13()
+    {
+        var calc = new Calculator();
+        Assert.Contains(13, calc.FiboNumbers);
+    }
+
+
+    [Fact]
+    public void FiboDoesNotIncludes4()
+    {
+        var calc = new Calculator();
+        Assert.DoesNotContain(4, calc.FiboNumbers);
+    }
+
+
+    [Fact]
+    public void CheckCollection()
+    {
+        var expectedCollection = new List<int> { 1, 1, 2, 3, 5, 8, 13 };
+        
+        var calc = new Calculator();
+        
+        Assert.Equal(expectedCollection, calc.FiboNumbers);
+    }
 }
