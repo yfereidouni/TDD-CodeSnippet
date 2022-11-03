@@ -20,7 +20,11 @@ public class NamesTest
 
         //Assert
         Assert.Equal("Yasser Fereidouni", result, ignoreCase: true); //Ignore Case-Sensitive
+        
         Assert.StartsWith("Yasser", result, StringComparison.InvariantCultureIgnoreCase);
+
         Assert.EndsWith(" fereidouni", result, StringComparison.InvariantCultureIgnoreCase);
+
+        Assert.Matches("([A-Z]{1}[a-z]+|[a-z]+) ([A-Z]{1}[a-z]+|[a-z]+)", result);
     }
 }
