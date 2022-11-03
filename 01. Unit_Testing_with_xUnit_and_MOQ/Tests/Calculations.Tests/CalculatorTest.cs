@@ -17,7 +17,7 @@ public class CalculatorTest : IClassFixture<CalculatorFixture>, IDisposable
     private readonly ITestOutputHelper _testOutputHelper;
     private readonly CalculatorFixture _calculatorFixture;
 
-    private readonly MemoryStream _memoryStream;
+    private readonly MemoryStream _memoryStream; //Define only for using Dispose method
 
     public CalculatorTest(ITestOutputHelper testOutputHelper, CalculatorFixture calculatorFixture)
     {
@@ -25,7 +25,7 @@ public class CalculatorTest : IClassFixture<CalculatorFixture>, IDisposable
         _calculatorFixture = calculatorFixture;
         _testOutputHelper.WriteLine($"Constructor - {DateTime.Now}");
 
-        _memoryStream = new MemoryStream(); // with IDisposable you can dispose resources in Dispose method
+        _memoryStream = new MemoryStream(); //With IDisposable you can dispose resources in Dispose method
     }
 
     [Fact]
