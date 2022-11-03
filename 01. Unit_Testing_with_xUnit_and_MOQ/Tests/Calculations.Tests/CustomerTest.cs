@@ -9,6 +9,7 @@ namespace Calculations.Tests;
 public class CustomerTest
 {
     [Fact]
+    [Trait("Customer", "Fields")]
     public void CheckNameNotEmpty()
     {
         var customer = new Customer();
@@ -17,6 +18,7 @@ public class CustomerTest
     }
 
     [Fact]
+    [Trait("Customer", "Fields")]
     public void CheckLegiForDiscount()
     {
         var customer = new Customer();
@@ -24,6 +26,7 @@ public class CustomerTest
     }
 
     [Fact]
+    [Trait("Customer", "Exceptions")]
     public void GetOrderByNameNotNull()
     {
         //Arrange
@@ -35,6 +38,7 @@ public class CustomerTest
     }
 
     [Fact]
+    [Trait("Customer", "Orders")]
     public void LoyalCustomerForOrdersGreaterThan100()
     {
         var customer = CustomerFactory.CreateCustomerInstance(102);
@@ -43,6 +47,7 @@ public class CustomerTest
     }
 
     [Fact]
+    [Trait("Customer", "Orders")]
     public void LoyalCustomerForOrdersLessThan100()
     {
         var customer = CustomerFactory.CreateCustomerInstance(99);

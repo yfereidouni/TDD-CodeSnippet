@@ -9,6 +9,7 @@ namespace Calculations.Tests;
 public class NamesTest
 {
     [Fact]
+    [Trait("Names", "Fullname")]
     public void MakeFullNameTest()
     {
         //Arrange
@@ -29,6 +30,7 @@ public class NamesTest
     }
 
     [Fact]
+    [Trait("Names", "Nickname")]
     public void NickName_ShouldNotBeNull()
     {
         var names = new Names();
@@ -39,6 +41,7 @@ public class NamesTest
     }
 
     [Fact]
+    [Trait("Names", "Fullname")]
     public void MakeFullName_AlwaysReturnsValue()
     {
         var names = new Names();

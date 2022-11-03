@@ -3,6 +3,7 @@ namespace Calculations.Tests;
 public class CalculatorTest
 {
     [Fact]
+    [Trait("Mathematics", "Sum")]
     public void Add_GivenTwoIntValues_ReturnsSumOfTwoValues()
     {
         //Arrange
@@ -17,6 +18,7 @@ public class CalculatorTest
     }
 
     [Fact]
+    [Trait("Mathematics", "Sum")]
     public void Add_GivenTwoDowbleValues_ReturnsSumOfTwoValues()
     {
         //Arrange
@@ -37,6 +39,7 @@ public class CalculatorTest
     }
 
     [Fact]
+    [Trait("Mathematics", "Fibo")]
     public void FiboDoesNotZeroValue01()
     {
         var calc = new Calculator();
@@ -44,6 +47,7 @@ public class CalculatorTest
     }
     
     [Fact]
+    [Trait("Mathematics", "Fibo")]
     public void FiboDoesNotZeroValue02()
     {
         var calc = new Calculator();
@@ -52,6 +56,7 @@ public class CalculatorTest
 
 
     [Fact]
+    [Trait("Mathematics", "Fibo")]
     public void FiboIncludes13()
     {
         var calc = new Calculator();
@@ -60,6 +65,7 @@ public class CalculatorTest
 
 
     [Fact]
+    [Trait("Mathematics", "Fibo")]
     public void FiboDoesNotIncludes4()
     {
         var calc = new Calculator();
@@ -68,6 +74,7 @@ public class CalculatorTest
 
 
     [Fact]
+    [Trait("Mathematics", "Fibo")]
     public void CheckCollection()
     {
         var expectedCollection = new List<int> { 1, 1, 2, 3, 5, 8, 13 };
