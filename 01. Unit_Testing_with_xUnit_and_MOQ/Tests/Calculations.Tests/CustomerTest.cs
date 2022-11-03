@@ -24,4 +24,14 @@ public class CustomerTest
 
         Assert.InRange(customer.Age, 20, 40);
     }
+
+    [Fact]
+    public void GetOrderByNameNotNull()
+    {
+        var customer = new Customer();
+
+        var result = Assert.Throws<ArgumentException>(() => customer.GetOrderByName(null));
+
+        Assert.Equal("Error Happend!", result.Message);
+    }
 }
