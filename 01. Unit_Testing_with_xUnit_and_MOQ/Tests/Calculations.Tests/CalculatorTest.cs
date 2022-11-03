@@ -2,9 +2,14 @@ using Xunit.Abstractions;
 
 namespace Calculations.Tests;
 
-public class CalculatorFixture
+public class CalculatorFixture : IDisposable
 {
     public Calculator Calc => new Calculator();
+
+    public void Dispose()
+    {
+        //For Cleanup the resources
+    }
 }
 
 public class CalculatorTest : IClassFixture<CalculatorFixture>
