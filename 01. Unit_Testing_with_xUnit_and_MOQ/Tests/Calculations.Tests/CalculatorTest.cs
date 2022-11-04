@@ -166,7 +166,7 @@ public class CalculatorTest : IClassFixture<CalculatorFixture>, IDisposable
     [InlineData(200, false)]
     [InlineData(55, true)]
     [InlineData(4, false)]
-    public void IsOdd_TestOddAndEvenValues(int value, bool expected)
+    public void IsOdd_TestOddAndEvenValues_InlineData(int value, bool expected)
     {
         var calc = _calculatorFixture.Calc;
         Assert.Equal(expected, calc.IsOdd(value));
@@ -176,7 +176,7 @@ public class CalculatorTest : IClassFixture<CalculatorFixture>, IDisposable
     [Theory]
     //[MemberData(memberName: nameof(TestDataShare.IsOddOrEvenData),MemberType = typeof(TestDataShare))]
     [MemberData("IsOddOrEvenData",MemberType = typeof(TestDataShare))]
-    public void IsOdd_TestOddAndEvenValues2(int value, bool expected)
+    public void IsOdd_TestOddAndEvenValues_SharedData(int value, bool expected)
     {
         var calc = _calculatorFixture.Calc;
         Assert.Equal(expected, calc.IsOdd(value));
@@ -186,7 +186,17 @@ public class CalculatorTest : IClassFixture<CalculatorFixture>, IDisposable
     [Theory]
     //[MemberData(memberName: nameof(TestDataShare.IsOddOrEvenDataExternalData),MemberType = typeof(TestDataShare))]
     [MemberData("IsOddOrEvenDataExternalData", MemberType = typeof(TestDataShare))]
-    public void IsOdd_TestOddAndEvenValues3(int value, bool expected)
+    public void IsOdd_TestOddAndEvenValues_ExternalData(int value, bool expected)
+    {
+        var calc = _calculatorFixture.Calc;
+        Assert.Equal(expected, calc.IsOdd(value));
+    }
+
+
+    //DataAttribute
+    [Theory]
+    [TestDataAttribute]
+    public void IsOdd_TestOddAndEvenValues_DataAttribute(int value, bool expected)
     {
         var calc = _calculatorFixture.Calc;
         Assert.Equal(expected, calc.IsOdd(value));
