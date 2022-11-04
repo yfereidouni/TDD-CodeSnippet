@@ -160,6 +160,17 @@ public class CalculatorTest : IClassFixture<CalculatorFixture>, IDisposable
         Assert.False(calc.IsOdd(4));
     }
 
+    [Theory]
+    [InlineData(1,true)]
+    [InlineData(200,false)]
+    [InlineData(55,true)]
+    [InlineData(4,false)]
+    public void IsOdd_TestOddAndEvenValues(int value, bool expected)
+    {
+        var calc = _calculatorFixture.Calc;
+        Assert.Equal(expected, calc.IsOdd(value));
+    }
+
     public void Dispose()
     {
         _memoryStream.Dispose();
