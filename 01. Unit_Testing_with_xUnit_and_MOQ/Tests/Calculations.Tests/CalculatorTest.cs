@@ -149,19 +149,15 @@ public class CalculatorTest : IClassFixture<CalculatorFixture>, IDisposable
     [Fact]
     public void IsOdd_GetOddValue_ReturnTure()
     {
-        var a = 5;
         var calc = _calculatorFixture.Calc;
-
-        Assert.True(calc.IsOdd(a));
+        Assert.True(calc.IsOdd(5));
     }
 
     [Fact]
     public void IsOdd_GetEvenValue_ReturnFalse()
     {
-        var a = 4;
         var calc = _calculatorFixture.Calc;
-
-        Assert.False(calc.IsOdd(a));
+        Assert.False(calc.IsOdd(4));
     }
 
     public void Dispose()
