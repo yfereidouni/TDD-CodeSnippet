@@ -18,4 +18,17 @@ public static class TestDataShare
             yield return new object[] { 4, false };
         }
     }
+
+    public static IEnumerable<object[]> IsOddOrEvenDataExternalData
+    {
+        get
+        {
+            var allLines = System.IO.File.ReadAllLines("IsOddOrEvenTestData.txt");
+            return allLines.Select(x =>
+            {
+                var lineSplit = x.Split(",");
+                return new object[] { int.Parse(lineSplit[0]), bool.Parse(lineSplit[1]) };
+            });
+        }
+    }
 }

@@ -160,6 +160,7 @@ public class CalculatorTest : IClassFixture<CalculatorFixture>, IDisposable
         Assert.False(calc.IsOdd(4));
     }
 
+    //InlineData
     [Theory]
     [InlineData(1, true)]
     [InlineData(200, false)]
@@ -171,6 +172,7 @@ public class CalculatorTest : IClassFixture<CalculatorFixture>, IDisposable
         Assert.Equal(expected, calc.IsOdd(value));
     }
 
+    //SharedData
     [Theory]
     //[MemberData(memberName: nameof(TestDataShare.IsOddOrEvenData),MemberType = typeof(TestDataShare))]
     [MemberData("IsOddOrEvenData",MemberType = typeof(TestDataShare))]
@@ -180,6 +182,15 @@ public class CalculatorTest : IClassFixture<CalculatorFixture>, IDisposable
         Assert.Equal(expected, calc.IsOdd(value));
     }
 
+    //ExternalData
+    [Theory]
+    //[MemberData(memberName: nameof(TestDataShare.IsOddOrEvenDataExternalData),MemberType = typeof(TestDataShare))]
+    [MemberData("IsOddOrEvenDataExternalData", MemberType = typeof(TestDataShare))]
+    public void IsOdd_TestOddAndEvenValues3(int value, bool expected)
+    {
+        var calc = _calculatorFixture.Calc;
+        Assert.Equal(expected, calc.IsOdd(value));
+    }
 
     public void Dispose()
     {
