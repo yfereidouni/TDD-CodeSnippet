@@ -20,6 +20,9 @@ public class Customer
 
         return 100;
     }
+
+    public string MakeFullName(string firstName, string lastName)
+        => $"{firstName} {lastName}"; 
 }
 
 public class LoyalCustomer : Customer

@@ -7,20 +7,25 @@ using Xunit.Abstractions;
 
 namespace Calculations.Tests;
 
+[Collection("Customer")]
 public class CustomerTest
 {
     private readonly ITestOutputHelper _testOutputHelper;
+    private readonly CustomerFixture _customerFixture;
 
-    public CustomerTest(ITestOutputHelper testOutputHelper)
+    public CustomerTest(ITestOutputHelper testOutputHelper, CustomerFixture customerFixture)
     {
         _testOutputHelper = testOutputHelper;
+        _customerFixture = customerFixture;
     }
 
     [Fact]
     [Trait("Customer", "Fields")]
     public void CheckNameNotEmpty()
     {
-        var customer = new Customer();
+        var customer = _customerFixture.Customer;
+        //var customer = new Customer();
+
         Assert.NotNull(customer.Name);
         Assert.False(string.IsNullOrEmpty(customer.Name));
         
@@ -31,7 +36,8 @@ public class CustomerTest
     [Trait("Customer", "Fields")]
     public void CheckLegiForDiscount()
     {
-        var customer = new Customer();
+        var customer = _customerFixture.Customer;
+        //var customer = new Customer();
         Assert.InRange(customer.Age, 20, 40);
     
         _testOutputHelper.WriteLine("By : YFereidouni");
@@ -42,7 +48,9 @@ public class CustomerTest
     public void GetOrderByNameNotNull()
     {
         //Arrange
-        var customer = new Customer();
+        var customer = _customerFixture.Customer;
+        //var customer = new Customer();
+
         //Act
         var exceptionDetails = Assert.Throws<ArgumentException>(() => customer.GetOrderByName(null));
         //Assert
