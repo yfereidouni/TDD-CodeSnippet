@@ -37,7 +37,7 @@ public class CalculatorTest : IClassFixture<CalculatorFixture>, IDisposable
         //Arrange
         var calc = _calculatorFixture.Calc;
         //var calc = new Calculator();
-        
+
         int a = 1;
         int b = 2;
         //Act
@@ -82,8 +82,8 @@ public class CalculatorTest : IClassFixture<CalculatorFixture>, IDisposable
         var calc = _calculatorFixture.Calc;
         //var calc = new Calculator();
 
-        Assert.All(calc.FiboNumbers, n=> Assert.NotEqual(0, n));
-    
+        Assert.All(calc.FiboNumbers, n => Assert.NotEqual(0, n));
+
         _testOutputHelper.WriteLine("By : YFereidouni");
     }
 
@@ -97,7 +97,7 @@ public class CalculatorTest : IClassFixture<CalculatorFixture>, IDisposable
         //var calc = new Calculator();
 
         Assert.DoesNotContain(0, calc.FiboNumbers);
-    
+
         _testOutputHelper.WriteLine("By : YFereidouni");
     }
 
@@ -112,7 +112,7 @@ public class CalculatorTest : IClassFixture<CalculatorFixture>, IDisposable
         //var calc = new Calculator();
 
         Assert.Contains(13, calc.FiboNumbers);
-    
+
         _testOutputHelper.WriteLine("By : YFereidouni");
     }
 
@@ -138,10 +138,10 @@ public class CalculatorTest : IClassFixture<CalculatorFixture>, IDisposable
         _testOutputHelper.WriteLine($"CheckCollection - {DateTime.Now}");
 
         var expectedCollection = new List<int> { 1, 1, 2, 3, 5, 8, 13 };
-        
+
         var calc = _calculatorFixture.Calc;
         //var calc = new Calculator();
-        
+
         Assert.Equal(expectedCollection, calc.FiboNumbers);
         _testOutputHelper.WriteLine("By : YFereidouni");
     }
@@ -161,15 +161,25 @@ public class CalculatorTest : IClassFixture<CalculatorFixture>, IDisposable
     }
 
     [Theory]
-    [InlineData(1,true)]
-    [InlineData(200,false)]
-    [InlineData(55,true)]
-    [InlineData(4,false)]
+    [InlineData(1, true)]
+    [InlineData(200, false)]
+    [InlineData(55, true)]
+    [InlineData(4, false)]
     public void IsOdd_TestOddAndEvenValues(int value, bool expected)
     {
         var calc = _calculatorFixture.Calc;
         Assert.Equal(expected, calc.IsOdd(value));
     }
+
+    [Theory]
+    //[MemberData(memberName: nameof(TestDataShare.IsOddOrEvenData),MemberType = typeof(TestDataShare))]
+    [MemberData("IsOddOrEvenData",MemberType = typeof(TestDataShare))]
+    public void IsOdd_TestOddAndEvenValues2(int value, bool expected)
+    {
+        var calc = _calculatorFixture.Calc;
+        Assert.Equal(expected, calc.IsOdd(value));
+    }
+
 
     public void Dispose()
     {
