@@ -146,6 +146,24 @@ public class CalculatorTest : IClassFixture<CalculatorFixture>, IDisposable
         _testOutputHelper.WriteLine("By : YFereidouni");
     }
 
+    [Fact]
+    public void IsOdd_GetOddValue_ReturnTure()
+    {
+        var a = 5;
+        var calc = _calculatorFixture.Calc;
+
+        Assert.True(calc.IsOdd(a));
+    }
+
+    [Fact]
+    public void IsOdd_GetEvenValue_ReturnFalse()
+    {
+        var a = 4;
+        var calc = _calculatorFixture.Calc;
+
+        Assert.False(calc.IsOdd(a));
+    }
+
     public void Dispose()
     {
         _memoryStream.Dispose();
